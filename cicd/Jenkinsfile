@@ -23,19 +23,19 @@ pipeline {
             }
         }
 
-    //     stage('Push Image') {
-    //         steps {
-    //             withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PSWD', usernameVariable: 'USER')]) {
-    //                 sh """                        
-    //                     docker login -u $USER -p $PSWD
-    //                     for img in gexin7648/cat:JR10 gexin7648/cat:latest gexin7648/helloworld:JR10 gexin7648/helloworld:latest \
-    //                            gexin7648/mynginx:JR10 gexin7648/mynginx:latest; \
-    //                     do docker push \$img; done;
-    //                 """
-    //             }
+        stage('Push Image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PSWD', usernameVariable: 'USER')]) {
+                    sh """                        
+                        docker login -u $USER -p $PSWD
+                        for img in gexin7648/cat:JR10 gexin7648/cat:latest gexin7648/helloworld:JR10 gexin7648/helloworld:latest \
+                               gexin7648/mynginx:JR10 gexin7648/mynginx:latest; \
+                        do docker push \$img; done;
+                    """
+                }
 
-    //         }
-    //     }
+            }
+        }
 
         stage('Deploy Service') {
             steps {
