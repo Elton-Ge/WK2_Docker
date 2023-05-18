@@ -29,20 +29,20 @@ jobs:
         docker push gexin7648/helloworld:action10
         docker push gexin7648/mynginx:action10
 
-    # - name: SSH to Remote Server and Run docker-compose
-    #   uses: appleboy/ssh-action@v0.1.10
-    #   with:
-    #     host: 20.213.125.197
-    #     username: azureuser
-    #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-    #     port: 2020        
-    #     script: |
-    #       echo "Running command on remote server"
-    #       cd ~/WK2_Docker
-    #       git pull
-    #       sudo docker-compose down
-    #       sudo docker-compose up -d
-    #       sudo docker-compose ps
+    - name: SSH to Remote Server and Run docker-compose
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: 34.125.156.190
+        username: spog_ai_service
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        # port: 2020        
+        script: |
+          echo "Running command on remote server"
+          cd ~/WK2_Docker
+          git pull
+          sudo docker-compose down
+          sudo docker-compose up -d
+          sudo docker-compose ps
       # uses: fifsky/ssh-action@master
       # with:
       #   command: |
