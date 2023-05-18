@@ -35,7 +35,7 @@ jobs:
         host: 34.125.156.190
         username: spog_ai_service
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        # port: 2020        
+        port: 22        
         script: |
           echo "Running command on remote server"
           cd ~/WK2_Docker
